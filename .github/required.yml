@@ -1,2 +1,4 @@
+_extends: .github
+
 files:
 - package.json
