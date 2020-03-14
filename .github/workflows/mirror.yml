@@ -11,8 +11,7 @@ jobs:
     steps:
     - name: Mirror
       run: |
-        git clone --mirror https://github.com/googleapis/googleapis.git
-        cd googleapis.git
-        git push --prune -f "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/jpoehnelt/googleapis.git" +refs/remotes/origin/*:refs/heads/* +refs/tags/*:refs/tags/*
+        git clone --single-branch --branch master https://github.com/googleapis/googleapis.git
+        git push "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/jpoehnelt/googleapis.git" 
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN_REPO }}
