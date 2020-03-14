@@ -1,0 +1,18 @@
+name: Mirror Repo
+on:
+  schedule:
+    # every five minutes
+    - cron:  '*/5 * * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Mirror
+      run: |
+        git clone --mirror https://github.com/googleapis/googleapis.git
+        cd mux.git/
+        git remote add github "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/jpoehnelt/googleapis.git"
+        git push --mirror github
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
