@@ -1,0 +1,17 @@
+name: Build Target
+on:
+  push:
+    branches: [ master ]
+  schedule:
+    - cron:  '*/2 * * * *'
+jobs:
+  build:
+    runs-on: ubuntu-latest    
+    steps:
+    - name: Clone
+      run: git clone --single-branch --branch master https://github.com/googleapis/googleapis.git
+    - name: Build
+      uses: docker://gcr.io/cloud-builders/bazel
+      run: |
+        cd googleapis
+        bazel build //google/maps/roads/...
