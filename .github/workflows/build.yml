@@ -3,7 +3,7 @@ on:
   push:
     branches: [ master ]
   schedule:
-    - cron:  '*/2 * * * *'
+    - cron:  '*0 * * * *'
 jobs:
   build:
     runs-on: ubuntu-latest    
@@ -18,7 +18,7 @@ jobs:
         path: "/home/runner/.cache/bazel"
         key: bazel
 
-    - name: Install bazelisk
+    - name: Install Bazel
       run: |
         curl -LO "https://github.com/bazelbuild/bazelisk/releases/download/v1.1.0/bazelisk-linux-amd64"
         mkdir -p "${GITHUB_WORKSPACE}/bin/"
