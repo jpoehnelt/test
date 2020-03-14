@@ -11,7 +11,6 @@ jobs:
     - name: Clone
       run: |
         git clone --single-branch --branch master https://github.com/googleapis/googleapis.git
-        cd googleapis
         
     - name: Mount bazel cache
       uses: actions/cache@v1
@@ -28,8 +27,10 @@ jobs:
 
     - name: Test
       run: |
+        cd googleapis
         "${GITHUB_WORKSPACE}/bin/bazel" test //...
 
     - name: Build
       run: |
+        cd googleapis
         "${GITHUB_WORKSPACE}/bin/bazel" build //...
