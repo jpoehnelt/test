@@ -1,4 +1,4 @@
-name: Mirror Repo
+name: Mirror googleapis/googleapis to jpoehnelt/googleapis
 on:
   push:
     branches: [ master ]
@@ -6,12 +6,12 @@ on:
     - cron:  '*/2 * * * *'
 jobs:
   build:
-    name: Run Some Scheduled Thing
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest    
     steps:
-    - name: Mirror
+    - name: Clone
+      run: git clone --single-branch --branch master https://github.com/googleapis/googleapis.git
+    - name: Push
       run: |
-        git clone --single-branch --branch master https://github.com/googleapis/googleapis.git
         cd googleapis
         git push "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/jpoehnelt/googleapis.git" 
       env:
