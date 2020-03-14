@@ -7,16 +7,18 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest    
+    env:
+      CACHE_KEY: ${{ date "+%Y-%m-%d-%H:%M" }}
     steps:
     - name: Clone
       run: |
         git clone --single-branch --branch master https://github.com/googleapis/googleapis.git
         
-    - name: Mount bazel cache
+    - name: Cache
       uses: actions/cache@v1
       with:
-        path: "/home/runner/.cache/bazel"
-        key: bazel
+        path: "~/bazel-cache"
+        key: ${CACHE_KEY}
 
     - name: Install Bazel
       run: |
@@ -28,9 +30,9 @@ jobs:
     - name: Test
       run: |
         cd googleapis
-        "${GITHUB_WORKSPACE}/bin/bazel" test //google/maps/roads/...
+        "${GITHUB_WORKSPACE}/bin/bazel" test --disk-cache ~/bazel-cache //google/maps/roads/...
 
     - name: Build
       run: |
         cd googleapis
-        "${GITHUB_WORKSPACE}/bin/bazel" build //google/maps/roads/...
+        "${GITHUB_WORKSPACE}/bin/bazel" build --disk-cache ~/bazel-cache //google/maps/roads/...
