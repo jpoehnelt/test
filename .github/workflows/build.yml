@@ -9,9 +9,9 @@ jobs:
     runs-on: ubuntu-latest    
     steps:
     - name: Clone
-      run: git clone --single-branch --branch master https://github.com/googleapis/googleapis.git
+      run: |
+        git clone --single-branch --branch master https://github.com/googleapis/googleapis.git
+        cd googleapis
     - name: Build
       uses: docker://gcr.io/cloud-builders/bazel
-      run: |
-        cd googleapis
-        bazel build //google/maps/roads/...
+      
