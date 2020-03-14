@@ -1,11 +1,10 @@
 name: Mirror Repo
 on:
   schedule:
-    # every five minutes
-    - cron:  '13 * * * *'
-
+    - cron:  '*/5 * * * *'
 jobs:
   build:
+    name: Run Some Scheduled Thing
     runs-on: ubuntu-latest
     steps:
     - name: Mirror
