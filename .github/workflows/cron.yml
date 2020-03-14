@@ -1,11 +1,11 @@
-name: Do Something That Needs Scheduled
+name: Cron
 on:
   schedule:
     - cron:  '*/5 * * * *'
 jobs:
   build:
-    name: Run Some Scheduled Thing
+    name: Run
     runs-on: ubuntu-latest
     steps:
-      - name: Do Something
+      - name: Echo
         run: echo "hello cron"
