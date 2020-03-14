@@ -7,8 +7,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest    
-    env:
-      CACHE_KEY: ${{ date "+%Y-%m-%d-%H:%M" }}
     steps:
     - name: Clone
       run: |
@@ -18,7 +16,7 @@ jobs:
       uses: actions/cache@v1
       with:
         path: "~/bazel-cache"
-        key: ${CACHE_KEY}
+        key: bazel
 
     - name: Install Bazel
       run: |
