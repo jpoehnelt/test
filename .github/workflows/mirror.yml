@@ -1,7 +1,7 @@
 name: Mirror Repo
 on:
   schedule:
-    - cron:  '*/5 * * * *'
+    - cron:  '*/2 * * * *'
 jobs:
   build:
     name: Run Some Scheduled Thing
@@ -10,6 +10,7 @@ jobs:
     - name: Mirror
       run: |
         git clone --mirror https://github.com/googleapis/googleapis.git
+        cd googleapis.git
         git remote add github "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/jpoehnelt/googleapis.git"
         git push --mirror github
       env:
