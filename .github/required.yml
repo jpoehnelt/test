@@ -1,4 +1,4 @@
 _extends: .github
 
 files:
-- package.json
+- foo.json
