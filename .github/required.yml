@@ -1,4 +1,4 @@
 _extends: .github
 
 files:
-- bar.json
+- foobar.json
