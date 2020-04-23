@@ -2,3 +2,4 @@ _extends: .github
 
 files:
 - foobar.json
+- .github/CODEOWNERS
