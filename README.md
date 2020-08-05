@@ -10,3 +10,4 @@ whitelist
 blacklist
 
 SLAVE
+WhITe_LIST
