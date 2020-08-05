@@ -9,3 +9,5 @@ master
 
 slave
 whitelist
+
+blacklist
