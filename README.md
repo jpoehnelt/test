@@ -17,3 +17,4 @@ blacklist
 slave
 
 WHITE-LIST
+bar
