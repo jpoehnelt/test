@@ -15,4 +15,4 @@ asdf
 blacklist
 
 slave
-master
+
