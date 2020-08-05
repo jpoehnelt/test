@@ -12,3 +12,10 @@ bar
 bar
 asdf
 asdf
+whitelist
+
+
+blacklist
+master 
+
+SLAVE
