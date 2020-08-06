@@ -1,4 +1,4 @@
 # test
 asdf
 asdf
-whitelist
+witelist
